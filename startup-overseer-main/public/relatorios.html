@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relatórios - Startup Overseer</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .bg-brand-teal {
+      background-color: #00C3A0;
+    }
+    .text-brand-teal {
+      color: #00C3A0;
+    }
+    .shadow-soft {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .shadow-card {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+    .shadow-button {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 h-screen w-64 bg-white border-r border-slate-200 shadow-sm z-50 transition-all duration-300 ease-in-out">
+      <div class="p-6 h-full flex flex-col">
+        <div class="flex items-center justify-center mb-8">
+          <h2 class="text-xl font-bold text-slate-800">Startup Overseer</h2>
+        </div>
+
+        <nav class="space-y-1 flex-grow">
+          <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition-colors hover:bg-slate-100 text-slate-700 hover:text-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-slate-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Dashboard</span>
+          </a>
+          <a href="empresas.html" class="flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition-colors hover:bg-slate-100 text-slate-700 hover:text-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-slate-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></svg>
+            <span>Empresas</span>
+          </a>
+          <a href="usuarios.html" class="flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium transition-colors hover:bg-slate-100 text-slate-700 hover:text-slate-900">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-slate-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Usuários</span>
+          </a>
+          <a href="relatorios.html" class="flex items-center gap-3 px-4 py-3 rounded-md text-sm font-medium bg-brand-teal text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" class="text-white" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="15" height="14" x="4.5" y="5" rx="2"/><path d="M7.5 5v14"/><path d="M19.5 9h-8"/><path d="M19.5 15h-8"/></svg>
+            <span>Relatórios</span>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Mobile toggle button -->
+    <button id="sidebarToggle" class="lg:hidden fixed top-4 left-4 z-50 p-2 rounded-md bg-white shadow-md transition-all">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </button>
+
+    <div class="flex-1 lg:ml-64">
+      <header class="bg-white sticky top-0 z-30 w-full border-b border-slate-200 px-4 py-3 shadow-sm">
+        <div class="container mx-auto flex justify-between items-center">
+          <h1 class="text-xl font-semibold text-slate-800">Relatórios</h1>
+          
+          <!-- User Dropdown Placeholder -->
+          <div class="relative">
+            <button class="flex items-center space-x-2 rounded-full">
+              <div class="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-sm font-medium text-gray-600">
+                AU
+              </div>
+            </button>
+          </div>
+        </div>
+      </header>
+      
+      <main class="p-4 md:p-6 max-w-7xl mx-auto">
+        <div class="rounded-lg bg-white p-6 shadow-soft">
+          <div class="mb-6 flex items-center space-x-4">
+            <div class="rounded-lg bg-brand-teal/10 p-3">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-brand-teal" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="15" height="14" x="4.5" y="5" rx="2"/><path d="M7.5 5v14"/><path d="M19.5 9h-8"/><path d="M19.5 15h-8"/></svg>
+            </div>
+            <h2 class="text-xl font-semibold text-slate-800">Relatórios e Análises</h2>
+          </div>
+          
+          <p class="text-gray-600">
+            Esta página exibirá gráficos e relatórios detalhados sobre empresas incubadas, 
+            suas métricas de desempenho e análises comparativas.
+          </p>
+          
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            <div class="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-4 text-lg font-medium text-slate-800">Métricas por Segmento</h3>
+              <div class="flex h-40 items-center justify-center text-slate-400">
+                Gráfico de segmentos será exibido aqui
+              </div>
+            </div>
+            
+            <div class="rounded-lg border border-slate-200 bg-slate-50 p-6">
+              <h3 class="mb-4 text-lg font-medium text-slate-800">Crescimento de Funcionários</h3>
+              <div class="flex h-40 items-center justify-center text-slate-400">
+                Gráfico de crescimento será exibido aqui
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Mobile sidebar toggle
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    let isOpen = false;
+
+    function toggleSidebar() {
+      isOpen = !isOpen;
+      if (isOpen) {
+        sidebar.style.transform = 'translateX(0)';
+        sidebarToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+      } else {
+        sidebar.style.transform = 'translateX(-100%)';
+        sidebarToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+      }
+    }
+
+    sidebarToggle.addEventListener('click', toggleSidebar);
+
+    // Close sidebar on mobile when screen size changes
+    function handleResize() {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        sidebar.style.transform = 'translateX(0)';
+        isOpen = true;
+      } else {
+        sidebar.style.transform = 'translateX(-100%)';
+        isOpen = false;
+        sidebarToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>';
+      }
+    }
+
+    // Initialize on load
+    handleResize();
+    window.addEventListener('resize', handleResize);
+  </script>
+</body>
+</html>

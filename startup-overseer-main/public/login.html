@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Startup Overseer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    .bg-brand-teal {
+      background-color: #00C3A0;
+    }
+    .text-brand-teal {
+      color: #00C3A0;
+    }
+    .focus\:ring-brand-teal:focus {
+      --tw-ring-color: #00C3A0;
+    }
+    .focus\:border-brand-teal:focus {
+      border-color: #00C3A0;
+    }
+    .hover\:opacity-90:hover {
+      opacity: 0.9;
+    }
+    .animate-fade-in {
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .shadow-button {
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen w-full flex">
+    <!-- Left side with illustration or brand messaging -->
+    <div class="hidden md:flex md:w-[70%] bg-brand-teal items-center justify-center">
+      <div class="max-w-lg text-white p-12 animate-fade-in">
+        <h1 class="text-4xl font-bold mb-6">Startup Overseer</h1>
+        <p class="text-xl mb-8 opacity-90">
+          Sistema de gestão para empresas incubadas
+        </p>
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-lg">
+          <p class="text-lg font-medium">
+            "Uma plataforma completa para o gerenciamento eficiente das suas empresas incubadas."
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Right side with login form -->
+    <div class="w-full md:w-[30%] flex items-center justify-center p-8">
+      <div class="w-full max-w-md space-y-8 animate-fade-in">
+        <div class="text-center">
+          <div class="mx-auto h-12 w-12 rounded-full bg-brand-teal text-white flex items-center justify-center mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+              <path d="M9 18V6"></path>
+              <path d="M15 18V6"></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-slate-900">Bem-vindo(a)</h2>
+          <p class="mt-2 text-sm text-slate-600">
+            Faça login para acessar a plataforma
+          </p>
+        </div>
+        
+        <form id="login-form" class="mt-8 space-y-6">
+          <div class="space-y-4">
+            <div>
+              <label for="email" class="block text-sm font-medium text-slate-700">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-teal focus:border-brand-teal"
+                placeholder="seu@email.com"
+              />
+            </div>
+            
+            <div>
+              <label for="password" class="block text-sm font-medium text-slate-700">
+                Senha
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                class="mt-1 block w-full px-3 py-2 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-brand-teal focus:border-brand-teal"
+                placeholder="••••••••"
+              />
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input
+                id="remember-me"
+                name="remember-me"
+                type="checkbox"
+                class="h-4 w-4 text-brand-teal focus:ring-brand-teal border-slate-300 rounded"
+              />
+              <label for="remember-me" class="ml-2 block text-sm text-slate-700">
+                Lembrar-me
+              </label>
+            </div>
+
+            <div class="text-sm">
+              <a href="#" class="font-medium text-brand-teal hover:opacity-80">
+                Esqueceu a senha?
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              id="login-button"
+              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-button text-sm font-medium text-white bg-brand-teal hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-teal disabled:opacity-70 disabled:cursor-not-allowed transition-all"
+            >
+              Entrar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginForm = document.getElementById('login-form');
+      const loginButton = document.getElementById('login-button');
+      
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Desabilitar botão e mostrar estado de loading
+        loginButton.disabled = true;
+        loginButton.innerHTML = `
+          <div class="h-5 w-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+        `;
+        
+        // Simulate loading and authentication
+        setTimeout(() => {
+          // Em um app real, isso seria uma chamada de API para autenticar
+          window.location.href = 'dashboard.html';
+        }, 1000);
+      });
+    });
+  </script>
+</body>
+</html>
